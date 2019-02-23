@@ -40,6 +40,17 @@ var coinOneNew = 0
 var coinTwoNew = 0
 var coinThreeNew = 0
 
+ImageArray = new Array();
+ImageArray[0] = 'images/Tex_badge_04.png';
+ImageArray[1] = 'images/Tex_badge_08.png';
+ImageArray[2] = 'images/Tex_badge_10.png';
+ImageArray[3] = 'images/Tex_badge_12.png';
+ImageArray[4] = 'images/Tex_badge_19.png';
+ImageArray[5] = 'images/Tex_badge_23.png';
+ImageArray[6] = 'images/Tex_badge_24.png';
+ImageArray[7] = 'images/Tex_badge_27.png';
+ImageArray[8] = 'images/Tex_badge_30.png';
+
 document.getElementById("enemyLevel").innerHTML = numberformat.formatShort(gameData.enemyLevel)
 
 $(document).ready(function(){
@@ -439,6 +450,7 @@ function display(){
 	document.getElementById("coinOne").innerHTML = numberformat.formatShort(gameData.coinOne)
 	document.getElementById("coinTwo").innerHTML = numberformat.formatShort(gameData.coinTwo)
 	document.getElementById("coinThree").innerHTML = numberformat.formatShort(gameData.coinThree)
+	document.getElementById("souls").innerHTML = numberformat.formatShort(gameData.souls)
 
 	document.getElementById("enemyKilled").innerHTML = "Enemies Killed: " + numberformat.formatShort(gameData.enemyKilled)
 	document.getElementById("enemyKilledMax").innerHTML = "Max enemy level: " +  numberformat.formatShort(gameData.enemyKilledMax)
