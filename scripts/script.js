@@ -450,7 +450,6 @@ function display(){
 	document.getElementById("coinOne").innerHTML = numberformat.formatShort(gameData.coinOne)
 	document.getElementById("coinTwo").innerHTML = numberformat.formatShort(gameData.coinTwo)
 	document.getElementById("coinThree").innerHTML = numberformat.formatShort(gameData.coinThree)
-	document.getElementById("souls").innerHTML = numberformat.formatShort(gameData.souls)
 
 	document.getElementById("enemyKilled").innerHTML = "Enemies Killed: " + numberformat.formatShort(gameData.enemyKilled)
 	document.getElementById("enemyKilledMax").innerHTML = "Max enemy level: " +  numberformat.formatShort(gameData.enemyKilledMax)
