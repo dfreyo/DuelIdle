@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <title>Duel Idle</title>
+  </head>
+  <body class="text-center">
+    <div class="container-fluid">
+      <h1>Duel Idle</h1>
+      <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist" >
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-battle-tab" data-toggle="pill" href="#pills-battle" role="tab" aria-controls="pills-battle" aria-selected="true"><h2>Battle</h2></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-chests-tab" data-toggle="pill" href="#pills-chests" role="tab" aria-controls="pills-chests" aria-selected="false"><h2>Chests <span id="chestNotification" class="badge badge-primary"></span></h2></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-shrine-tab" data-toggle="pill" href="#pills-shrine" role="tab" aria-controls="pills-shrine" aria-selected="false"><h2>Shrine <span id="shrineNotification" class="badge badge-primary"></span></h2></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="false"><h2>Settings</h2></a>
+        </li>
+      </ul>
+    </div>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-battle" role="tabpanel" aria-labelledby="pills-battle-tab">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                <h4>Player</h4>
+                <img src="images/Tex_badge_16.png" class="img-fluid shake" style="width: 50%;">
+                <div class="progress">
+                  <div id="playerHealthBar" class="progress-bar" role="progressbar" style="width: 100%;"><span id="playerHealthBarPercent">#%</span></div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <h4>Enemy <span>(<span id="enemyLevel"></span>)</span></h4>
+                <img src="images/Tex_badge_04.png" class="img-fluid shake" style="width: 50%;">
+                <div class="progress">
+                  <div id="enemyHealthBar" class="progress-bar" role="progressbar" style="width: 100%;"><span id="enemyHealthBarPercent">#%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-3">
+                <h5 class="text-success">Offence</h5>
+                <p id="playerAttack"></p>
+                <p id="playerCritChance" data-toggle="tooltip" data-placement="bottom" title="% chance to deal double damage."></p>
+                <p id="playerThorns" data-toggle="tooltip" data-placement="bottom" title="% of enemies attack returned to enemy."></p>
+              </div>
+              <div class="col-sm-3">
+                <h5 class="text-success">Defence</h5>
+                <p id="playerMaxHealth"></p>
+                <p id="playerLifeSteal" data-toggle="tooltip" data-placement="bottom" title="% of player attack returned to player."></p>
+                <p id="playerDodge" data-toggle="tooltip" data-placement="bottom" title="% chance to avoid enemy attack."></p>
+              </div>
+              <div class="col-sm-3">
+                <h5 class="text-danger">Offence</h5>
+                <p id="enemyAttack"></p>
+              </div>
+              <div class="col-sm-3">
+                <h5 class="text-danger">Defence</h5>
+                <p id="enemyMaxHealth"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-chests" role="tabpanel" aria-labelledby="pills-chests-tab">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4" data-toggle="tooltip" data-placement="bottom" title="10% enemy drops on kill. Use to buy chests.">
+                <h3><img src="images/Chest_04_02.png" class="img-fluid" style="width: 10%;"><span id="coinOne"></span></h3>
+              </div>
+              <div class="col-sm-4" data-toggle="tooltip" data-placement="bottom" title="10% enemy drops on kill. Use to buy chests.">
+                <h3><img src="images/Chest_04_03.png" class="img-fluid" style="width: 10%;"><span id="coinTwo"></span></h3>
+              </div>
+              <div class="col-sm-4" data-toggle="tooltip" data-placement="bottom" title="10% enemy drops on kill. Use to buy chests.">
+                <h3><img src="images/Chest_04_04.png" class="img-fluid" style="width: 10%;"><span id="coinThree"></span></h3>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <h4>Tier 1 Chest</h4>
+                <h5>Contains Attack or Health.</h5>
+                <img src="images/Chest_02_04.png" class="img-fluid" style="width: 50%;">
+                <button type="button" onclick="chestOne()" class="btn btn-primary btn-lg btn-block">Tier 1 Cost: <img src="images/Chest_04_02.png" class="img-fluid" style="width: 10%;">1</button>
+                <button type="button" onclick="chestOneMax()" class="btn btn-primary btn-lg btn-block">Buy Max</button>
+              </div>
+              <div class="col-sm-4">
+                <h4>Tier 2 Chest</h4>
+                <h5>Contains Crit Chance or Life Steal.</h5>
+                <img src="images/Chest_02_01.png" class="img-fluid" style="width: 50%;">
+                <button type="button" onclick="chestTwo()" class="btn btn-primary btn-lg btn-block">Tier 2 Cost: <img src="images/Chest_04_03.png" class="img-fluid" style="width: 10%;">10</button>
+                <button type="button" onclick="chestTwoMax()" class="btn btn-primary btn-lg btn-block">Buy Max</button>
+              </div>
+              <div class="col-sm-4">
+                <h4>Tier 3 Chest</h4>
+                <h5>Contains Thorns or Dodge.</h5>
+                <img src="images/Chest_02_03.png" class="img-fluid" style="width: 50%;">
+                <button type="button" onclick="chestThree()" class="btn btn-primary btn-lg btn-block">Tier 3 Cost: <img src="images/Chest_04_04.png" class="img-fluid" style="width: 10%;">100</button>
+                <button type="button" onclick="chestThreeMax()" class="btn btn-primary btn-lg btn-block">Buy Max</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-shrine" role="tabpanel" aria-labelledby="pills-shrine-tab">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-4">
+                  <h4>Game Speed</h4>
+                  <h5>Gain 1.5x game speed for 1 minute.</h5>
+                  <button type="button" onclick="chestOne()" class="btn btn-primary btn-lg btn-block">Tier 1 Cost: <img src="images/Tex_badge_21.png" class="img-fluid" style="width: 10%;">1</button>
+                  <h4>Attack Multiplier</h4>
+                  <h5>Gain 1.5x Attack for 1 minute.</h5>
+                  <button type="button" onclick="chestTwo()" class="btn btn-primary btn-lg btn-block">Tier 2 Cost: <img src="images/Tex_badge_21.png" class="img-fluid" style="width: 10%;">10</button>
+                </div>
+                <div class="col-sm-4">
+                  <h3><img src="images/Tex_badge_21.png" class="img-fluid" style="width: 10%;"><span id="souls"></h3>
+                  <img src="images/Tex_badge_26.png" class="img-fluid" style="width: 50%;">
+                </div>
+                <div class="col-sm-4">
+                  <h4>Health Multiplier</h4>
+                  <h5>Gain 1.5x Health for 1 minute.</h5>
+                  <button type="button" onclick="chestThree()" class="btn btn-primary btn-lg btn-block">Tier 3 Cost: <img src="images/Tex_badge_21.png" class="img-fluid" style="width: 10%;">100</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                <br>
+                <br>
+                <br>
+                <button onclick="saveGame()" type="button" class="btn btn-success"><h4>Save</h4></button>
+                <button onclick="loadGame()" type="button" class="btn btn-warning"><h4>Load</h4></button>
+                <button onclick="newGame()" type="button" class="btn btn-danger"><h4>New Game</h4></button>
+              </div>
+              <div class="col-sm-6">
+                <h4>Stats:</h4>
+                <h5 id="enemyKilled"></h5>
+                <h5 id="enemyKilledMax"></h5>
+                <h5 id="playerKilled"></h5>
+                <h5 id="chestOneOpened"></h5>
+                <h5 id="chestTwoOpened"></h5>
+                <h5 id="chestThreeOpened"></h5>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <h5 data-toggle="tooltip" data-placement="bottom" title="Thanks For Playing!">Alpha 1.013</h5>
+          </div>
+        </div>
+      </div>
+    <script src="scripts/jquery.min.js" charset="utf-8" type="text/javascript"></script>
+    <script src="scripts/popper.min.js" charset="utf-8" type="text/javascript"></script>
+    <script src="scripts/bootstrap.min.js" charset="utf-8" type="text/javascript"></script>
+    <script src="scripts/numberformat.js" charset="utf-8" type="text/javascript"></script>
+    <script src="scripts/alertify.min.js" charset="utf-8" type="text/javascript"></script>
+    <script src="scripts/script.js" charset="utf-8" type="text/javascript"></script>
+  </body>
+</html>
