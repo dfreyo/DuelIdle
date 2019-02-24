@@ -34,6 +34,7 @@ var gameData = {
 	chestOneOpened: 0,
 	chestTwoOpened: 0,
 	chestThreeOpened: 0,
+	shrineUsed: 0,
 
 	multiAttack: 0,
 	multiHealth: 0,
@@ -416,6 +417,7 @@ function chestThreeMax(){
 
 function shrine(){
 	if (gameData.souls >= 100) {
+		gameData.shrineUsed ++
 		gameData.souls -= 100
 		if (Math.random() >= .5) {
 			gameData.attackSeconds += 300
@@ -427,6 +429,7 @@ function shrine(){
 
 function shrineMax(){
 	for (;gameData.souls >= 100;) {
+		gameData.shrineUsed ++
 		gameData.souls -= 100
 		if (Math.random() >= .5) {
 			gameData.attackSeconds += 300
@@ -501,6 +504,8 @@ function display(){
 	document.getElementById("chestOneOpened").innerHTML = "Tier 1 chest opened: " +  numberformat.formatShort(gameData.chestOneOpened)
 	document.getElementById("chestTwoOpened").innerHTML = "Tier 2 chest opened: " +  numberformat.formatShort(gameData.chestTwoOpened)
 	document.getElementById("chestThreeOpened").innerHTML = "Tier 3 chest opened: " +  numberformat.formatShort(gameData.chestThreeOpened)
+	document.getElementById("shrineUsed").innerHTML = "Times shrine used: " +  numberformat.formatShort(gameData.shrineUsed)
+
 	if (gameData.attackSeconds) {
 		document.getElementById("attackSeconds").innerHTML = "1.5x Attack: " + numberformat.formatShort(gameData.attackSeconds / 60) + " Minutes"
 
