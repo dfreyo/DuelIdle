@@ -114,28 +114,20 @@
           </div>
         </div>
         <div class="tab-pane fade" id="pills-shrine" role="tabpanel" aria-labelledby="pills-shrine-tab">
-          <h1>Under Construction</h1>
+          <h3><img src="images/Tex_badge_21.png" class="img-fluid" style="width: 2.5%;"><span id="souls"></h3>
             <div class="container">
-              <h3><img src="images/Tex_badge_21.png" class="img-fluid" style="width: 5%;"><span id="souls"></h3>
-              <img src="images/Tex_badge_26.png" class="img-fluid" style="width: 20%;">
               <div class="row">
-                <div class="col-sm-4">
-                  <h4>Attack Multiplier</h4>
-                  <h5>Gain 1.5x Attack for 10 minutes.</h5>
-                  <button type="button" onclick="soulOne()" class="btn btn-primary btn-lg btn-block"><img src="images/Tex_badge_21.png" class="img-fluid" style="width: 10%;">100 Souls</button>
-                  <p id="attackSeconds"></p>
+                <div class="col-sm-6">
+                  <img src="images/Tex_badge_26.png" class="img-fluid" style="width: 50%;">
+                  <h4>Sacrifice Souls</h4>
+                  <h5>Sacrifice Souls for random bonuses.</h5>
+                  <button type="button" onclick="shrine()" class="btn btn-primary btn-lg btn-block"><img src="images/Tex_badge_21.png" class="img-fluid" style="width: 7.5%;">100 Souls</button>
+                  <button type="button" onclick="shrineMax()" class="btn btn-primary btn-lg btn-block">Sacrifice Max</button>
                 </div>
-                <div class="col-sm-4">
-                  <h4>Health Multiplier</h4>
-                  <h5>Gain 1.5x Health for 10 minutes.</h5>
-                  <button type="button" onclick="soulTwo()" class="btn btn-primary btn-lg btn-block"><img src="images/Tex_badge_21.png" class="img-fluid" style="width: 10%;">100 Souls</button>
-                  <p id="healthSeconds"></p>
-
-                </div>
-                <div class="col-sm-4">
-                  <h4>something Multiplier</h4>
-                  <h5>Gain 1.5x something for 10 minutes.</h5>
-                  <button type="button" onclick="soulThree()" class="btn btn-primary btn-lg btn-block"><img src="images/Tex_badge_21.png" class="img-fluid" style="width: 10%;">100 Souls</button>
+                <div class="col-sm-6">
+                  <h4>Current Bonuses</h4>
+                  <h6 id="attackSeconds"></h6>
+                  <h6 id="healthSeconds"></h6>
                 </div>
               </div>
             </div>

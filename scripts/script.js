@@ -414,23 +414,25 @@ function chestThreeMax(){
 	playerStats()
 }
 
-function soulOne(){
+function shrine(){
 	if (gameData.souls >= 100) {
 		gameData.souls -= 100
-		gameData.attackSeconds += 600
+		if (Math.random() >= .5) {
+			gameData.attackSeconds += 300
+		} else {
+			gameData.healthSeconds += 300
+		}
 	}
 }
 
-function soulTwo(){
-	if (gameData.souls >= 100) {
+function shrineMax(){
+	for (;gameData.souls >= 100;) {
 		gameData.souls -= 100
-		gameData.healthSeconds += 600
-	}
-}
-
-function soulThree(){
-	if (gameData.souls >= 100) {
-		gameData.souls -= 100
+		if (Math.random() >= .5) {
+			gameData.attackSeconds += 300
+		} else {
+			gameData.healthSeconds += 300
+		}
 	}
 }
 
@@ -499,9 +501,17 @@ function display(){
 	document.getElementById("chestOneOpened").innerHTML = "Tier 1 chest opened: " +  numberformat.formatShort(gameData.chestOneOpened)
 	document.getElementById("chestTwoOpened").innerHTML = "Tier 2 chest opened: " +  numberformat.formatShort(gameData.chestTwoOpened)
 	document.getElementById("chestThreeOpened").innerHTML = "Tier 3 chest opened: " +  numberformat.formatShort(gameData.chestThreeOpened)
+	if (gameData.attackSeconds) {
+		document.getElementById("attackSeconds").innerHTML = "1.5x Attack: " + numberformat.formatShort(gameData.attackSeconds / 60) + " Minutes"
 
-	document.getElementById("attackSeconds").innerHTML = gameData.attackSeconds
-	document.getElementById("healthSeconds").innerHTML = gameData.healthSeconds
+	}else {
+		document.getElementById("attackSeconds").innerHTML = ""
+	}
+	if (gameData.healthSeconds) {
+		document.getElementById("healthSeconds").innerHTML = "1.5x Health: " + numberformat.formatShort(gameData.healthSeconds / 60) + " Minutes"
+	} else {
+		document.getElementById("healthSeconds").innerHTML = ""
+	}
 }
 
 var chestOneCan = 0
@@ -533,6 +543,12 @@ function notifications(){
 	} else {
 		document.getElementById("chestNotification").innerHTML = ""
 	}
+
+	if (gameData.souls >= 100) {
+		document.getElementById("shrineNotification").innerHTML = numberformat.formatShort(Math.floor(gameData.souls / 100))
+	} else {
+		document.getElementById("shrineNotification").innerHTML = ""
+	}
 }
 
 loadGame()
@@ -549,7 +565,7 @@ setInterval(function gameLoop(){
 setInterval(function saveLoop(){
 	saveGame()
   console.log("Tick.");
-}, 60000);
+}, 300000);
 
 function saveGame(){
   localStorage.setItem('duelIdle', JSON.stringify(gameData))
