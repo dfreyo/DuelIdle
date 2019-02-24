@@ -118,7 +118,7 @@ function playerStats(){
 		gameData.playerAttack *= 1.5
 	}
 
-	if (gameData.multiAttack == 1.5) {
+	if (gameData.multiHealth == 1.5) {
 		gameData.playerMaxHealth *= 1.5
 	}
 }
