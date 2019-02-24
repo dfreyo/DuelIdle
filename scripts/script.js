@@ -33,23 +33,18 @@ var gameData = {
 	playerKilled: 0,
 	chestOneOpened: 0,
 	chestTwoOpened: 0,
-	chestThreeOpened: 0
+	chestThreeOpened: 0,
+
+	multiAttack: 0,
+	multiHealth: 0,
+
+	attackSeconds: 0,
+	healthSeconds: 0,
 }
 
 var coinOneNew = 0
 var coinTwoNew = 0
 var coinThreeNew = 0
-
-ImageArray = new Array();
-ImageArray[0] = 'images/Tex_badge_04.png';
-ImageArray[1] = 'images/Tex_badge_08.png';
-ImageArray[2] = 'images/Tex_badge_10.png';
-ImageArray[3] = 'images/Tex_badge_12.png';
-ImageArray[4] = 'images/Tex_badge_19.png';
-ImageArray[5] = 'images/Tex_badge_23.png';
-ImageArray[6] = 'images/Tex_badge_24.png';
-ImageArray[7] = 'images/Tex_badge_27.png';
-ImageArray[8] = 'images/Tex_badge_30.png';
 
 document.getElementById("enemyLevel").innerHTML = numberformat.formatShort(gameData.enemyLevel)
 
@@ -106,7 +101,7 @@ function attack(){
 }
 
 function splash(){
-	for (;gameData.playerAttack >= gameData.enemyMaxHealth;) {
+	for (;gameData.playerAttack >= gameData.enemyMaxHealth * 2;) {
 		attack()
 	}
 }
@@ -118,11 +113,19 @@ function playerStats(){
 	gameData.playerLifeSteal = gameData.playerLevelLifeSteal / 100
 	gameData.playerThorns = gameData.playerLevelThorns / 100
 	gameData.playerDodge = gameData.playerLevelDodge / 100
+
+	if (gameData.multiAttack == 1.5) {
+		gameData.playerAttack *= 1.5
+	}
+
+	if (gameData.multiAttack == 1.5) {
+		gameData.playerMaxHealth *= 1.5
+	}
 }
 
 function enemyStats(){
-	gameData.enemyAttack = (gameData.enemyLevel * 10) + 10
-	gameData.enemyMaxHealth = (gameData.enemyLevel * 100) + 100
+	gameData.enemyAttack = ((gameData.enemyLevel * 10) + 10) * Math.pow(1.05, gameData.enemyLevel)
+	gameData.enemyMaxHealth = ((gameData.enemyLevel * 100) + 100) * Math.pow(1.05, gameData.enemyLevel)
 	document.getElementById("enemyLevel").innerHTML = numberformat.formatShort(gameData.enemyLevel)
 }
 
@@ -411,6 +414,44 @@ function chestThreeMax(){
 	playerStats()
 }
 
+function soulOne(){
+	if (gameData.souls >= 100) {
+		gameData.souls -= 100
+		gameData.attackSeconds += 600
+	}
+}
+
+function soulTwo(){
+	if (gameData.souls >= 100) {
+		gameData.souls -= 100
+		gameData.healthSeconds += 600
+	}
+}
+
+function soulThree(){
+	if (gameData.souls >= 100) {
+		gameData.souls -= 100
+	}
+}
+
+function attackTime(){
+if (gameData.attackSeconds >= 1) {
+	gameData.attackSeconds --
+	gameData.multiAttack = 1.5
+} else {
+	gameData.multiAttack = 0
+	}
+}
+
+function healthTime(){
+if (gameData.healthSeconds >= 1) {
+	gameData.healthSeconds --
+	gameData.multiHealth = 1.5
+} else {
+	gameData.multiHealth = 0
+	}
+}
+
 function display(){
 	document.getElementById("playerHealthBar").setAttribute("style", "width:" + ((gameData.playerCurrentHealth / gameData.playerMaxHealth) * 100) + "%")
 	document.getElementById("enemyHealthBar").setAttribute("style", "width:" + ((gameData.enemyCurrentHealth / gameData.enemyMaxHealth) * 100) + "%")
@@ -458,6 +499,9 @@ function display(){
 	document.getElementById("chestOneOpened").innerHTML = "Tier 1 chest opened: " +  numberformat.formatShort(gameData.chestOneOpened)
 	document.getElementById("chestTwoOpened").innerHTML = "Tier 2 chest opened: " +  numberformat.formatShort(gameData.chestTwoOpened)
 	document.getElementById("chestThreeOpened").innerHTML = "Tier 3 chest opened: " +  numberformat.formatShort(gameData.chestThreeOpened)
+
+	document.getElementById("attackSeconds").innerHTML = gameData.attackSeconds
+	document.getElementById("healthSeconds").innerHTML = gameData.healthSeconds
 }
 
 var chestOneCan = 0
@@ -495,6 +539,8 @@ loadGame()
 
 setInterval(function gameLoop(){
 	attack()
+	attackTime()
+	healthTime()
 	display()
 	notifications()
   console.log("Tick.");
@@ -523,40 +569,7 @@ function loadGame(){
 }
 
 function newGame(){
-	gameData.playerCurrentHealth = 1000
-	gameData.playerMaxHealth = 1000
-	gameData.playerHealthPercent = 100
-	gameData.playerAttack = 100
-
-	gameData.playerCritChance = 0
-	gameData.playerLifeSteal = 0
-	gameData.playerThorns = 0
-	gameData.playerDodge = 0
-
-	gameData.playerLevelAttack = 0
-	gameData.playerLevelHealth = 0
-	gameData.playerLevelCritChance = 0
-	gameData.playerLevelLifeSteal = 0
-	gameData.playerLevelThorns = 0
-	gameData.playerLevelDodge = 0
-
-	gameData.enemyCurrentHealth = 100
-	gameData.enemyMaxHealth = 100
-	gameData.enemyHealthPercent = 100
-	gameData.enemyLevel = 0
-	gameData.enemyAttack = 10
-
-	gameData.coinOne = 0
-	gameData.coinTwo = 0
-	gameData.coinThree = 0
-
-	gameData.souls = 0
-
-	gameData.enemyKilled = 0
-	gameData.enemyKilledMax = 0
-	gameData.playerKilled = 0
-	gameData.chestOneOpened = 0
-	gameData.chestTwoOpened = 0
-	gameData.chestThreeOpened = 0
+	localStorage.clear();
+	location.reload();
   console.log("New Game.");
 }
