@@ -33,14 +33,14 @@
             <div class="row">
               <div class="col-sm-6">
                 <h4>Player</h4>
-                <img src="images/Tex_badge_16.png" class="img-fluid shake" style="width: 50%;">
+                <img src="images/player.png" class="img-fluid shake" style="width: 50%;">
                 <div class="progress">
                   <div id="playerHealthBar" class="progress-bar" role="progressbar" style="width: 100%;"><span id="playerHealthBarPercent">#%</span></div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <h4>Enemy <span>(<span id="enemyLevel"></span>)</span></h4>
-                <img src="images/Tex_badge_04.png" class="img-fluid shake" style="width: 50%;">
+                <img src="images/enemy.png" class="img-fluid shake" style="width: 50%;">
                 <div class="progress">
                   <div id="enemyHealthBar" class="progress-bar" role="progressbar" style="width: 100%;"><span id="enemyHealthBarPercent">#%</span></div>
                 </div>
@@ -77,13 +77,13 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-4" data-toggle="tooltip" data-placement="bottom" title="10% enemy drops on kill. Use to buy chests.">
-                <h3><img src="images/Chest_04_02.png" class="img-fluid" style="width: 10%;"><span id="coinOne"></span></h3>
+                <h3><img src="images/coinOne.png" class="img-fluid" style="width: 10%;"><span id="coinOne"></span></h3>
               </div>
               <div class="col-sm-4" data-toggle="tooltip" data-placement="bottom" title="10% enemy drops on kill. Use to buy chests.">
-                <h3><img src="images/Chest_04_03.png" class="img-fluid" style="width: 10%;"><span id="coinTwo"></span></h3>
+                <h3><img src="images/coinTwo.png" class="img-fluid" style="width: 10%;"><span id="coinTwo"></span></h3>
               </div>
               <div class="col-sm-4" data-toggle="tooltip" data-placement="bottom" title="10% enemy drops on kill. Use to buy chests.">
-                <h3><img src="images/Chest_04_04.png" class="img-fluid" style="width: 10%;"><span id="coinThree"></span></h3>
+                <h3><img src="images/coinThree.png" class="img-fluid" style="width: 10%;"><span id="coinThree"></span></h3>
               </div>
             </div>
           </div>
@@ -92,42 +92,45 @@
               <div class="col-sm-4">
                 <h4>Tier 1 Chest</h4>
                 <h5>Contains Attack or Health.</h5>
-                <img src="images/Chest_02_04.png" class="img-fluid" style="width: 50%;">
-                <button type="button" onclick="chestOne()" class="btn btn-primary btn-lg btn-block">Tier 1 Cost: <img src="images/Chest_04_02.png" class="img-fluid" style="width: 10%;">1</button>
+                <img src="images/chestOne.png" class="img-fluid" style="width: 50%;">
+                <button type="button" onclick="chestOne()" class="btn btn-primary btn-lg btn-block">Tier 1 Cost: <img src="images/coinOne.png" class="img-fluid" style="width: 10%;">1</button>
                 <button type="button" onclick="chestOneMax()" class="btn btn-primary btn-lg btn-block">Buy Max</button>
               </div>
               <div class="col-sm-4">
                 <h4>Tier 2 Chest</h4>
                 <h5>Contains Crit Chance or Life Steal.</h5>
-                <img src="images/Chest_02_01.png" class="img-fluid" style="width: 50%;">
-                <button type="button" onclick="chestTwo()" class="btn btn-primary btn-lg btn-block">Tier 2 Cost: <img src="images/Chest_04_03.png" class="img-fluid" style="width: 10%;">10</button>
+                <img src="images/chestTwo.png" class="img-fluid" style="width: 50%;">
+                <button type="button" onclick="chestTwo()" class="btn btn-primary btn-lg btn-block">Tier 2 Cost: <img src="images/coinTwo.png" class="img-fluid" style="width: 10%;">10</button>
                 <button type="button" onclick="chestTwoMax()" class="btn btn-primary btn-lg btn-block">Buy Max</button>
               </div>
               <div class="col-sm-4">
                 <h4>Tier 3 Chest</h4>
                 <h5>Contains Thorns or Dodge.</h5>
-                <img src="images/Chest_02_03.png" class="img-fluid" style="width: 50%;">
-                <button type="button" onclick="chestThree()" class="btn btn-primary btn-lg btn-block">Tier 3 Cost: <img src="images/Chest_04_04.png" class="img-fluid" style="width: 10%;">100</button>
+                <img src="images/chestThree.png" class="img-fluid" style="width: 50%;">
+                <button type="button" onclick="chestThree()" class="btn btn-primary btn-lg btn-block">Tier 3 Cost: <img src="images/coinThree.png" class="img-fluid" style="width: 10%;">100</button>
                 <button type="button" onclick="chestThreeMax()" class="btn btn-primary btn-lg btn-block">Buy Max</button>
               </div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade" id="pills-shrine" role="tabpanel" aria-labelledby="pills-shrine-tab">
-          <h3 data-toggle="tooltip" data-placement="bottom" title="Drops of player death based on enemy level. Use at the Shrine to gain temporary boosts."><img src="images/Tex_badge_21.png" class="img-fluid" style="width: 2.5%;"><span id="souls"></h3>
+          <h3 data-toggle="tooltip" data-placement="bottom" title="Drops of player death based on enemy level. Use at the Shrine to gain temporary boosts."><img src="images/souls.png" class="img-fluid" style="width: 2.5%;"><span id="souls"></h3>
             <div class="container">
               <div class="row">
                 <div class="col-sm-6">
-                  <img src="images/Tex_badge_26.png" class="img-fluid" style="width: 50%;">
+                  <img src="images/shrine.png" class="img-fluid" style="width: 50%;">
                   <h4>Sacrifice Souls</h4>
                   <h5>Sacrifice Souls for random temporary bonuses.</h5>
-                  <button type="button" onclick="shrine()" class="btn btn-primary btn-lg btn-block"><img src="images/Tex_badge_21.png" class="img-fluid" style="width: 7.5%;">100 Souls</button>
+                  <button type="button" onclick="shrine()" class="btn btn-primary btn-lg btn-block"><img src="images/souls.png" class="img-fluid" style="width: 7.5%;">100 Souls</button>
                   <button type="button" onclick="shrineMax()" class="btn btn-primary btn-lg btn-block">Sacrifice Max</button>
                 </div>
                 <div class="col-sm-6">
-                  <h4>Current Bonuses</h4>
-                  <h6 id="attackSeconds"></h6>
-                  <h6 id="healthSeconds"></h6>
+                  <h4>Current Bonuses:</h4>
+                  <h5 id="playerAttackSeconds"></h5>
+                  <h5 id="playerHealthSeconds"></h5>
+                  <h5 id="enemyAttackSeconds"></h5>
+                  <h5 id="enemyHealthSeconds"></h5>
+                  <h5 id="coinSeconds"></h5>
                 </div>
               </div>
             </div>
@@ -142,6 +145,11 @@
                 <button onclick="saveGame()" type="button" class="btn btn-success"><h4>Save</h4></button>
                 <button onclick="loadGame()" type="button" class="btn btn-warning"><h4>Load</h4></button>
                 <button onclick="newGame()" type="button" class="btn btn-danger"><h4>New Game</h4></button>
+                <br>
+                <a href="https://www.reddit.com/r/duelidle" target="_blank"><img src="images/reddit.png" class="img-fluid" style="width: 10%;"></a>
+                <a href="https://discord.gg/G6qfUbs" target="_blank"><img src="images/discord.png" class="img-fluid" style="width: 10%;"></a>
+                <a href="https://github.com/Pweast/DuelIdle" target="_blank"><img src="images/github.png" class="img-fluid" style="width: 10%;"></a>
+                <h5 data-toggle="tooltip" data-placement="bottom" title="Thanks For Playing!">Alpha 1.1</h5>
               </div>
               <div class="col-sm-6">
                 <h4>Stats:</h4>
@@ -156,7 +164,39 @@
             </div>
           </div>
           <div class="container-fluid">
-            <h5 data-toggle="tooltip" data-placement="bottom" title="Thanks For Playing!">Alpha 1.013</h5>
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#changelog" data-parent="#myGroup"><h4>Changelog</h4></button>
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#donate" data-parent="#myGroup"><h4>Donate</h4></button>
+            <div id="myGroup">
+              <div id="changelog" class="collapse toggle text-left" data-parent="#myGroup">
+                <!--
+                //<p class="text-success">+</p>
+                //<p class="text-warning">-</p>
+                -->
+                <h5>1st March, 2019</h5>
+                <p class="text-success">+Upon player respawn attack enemy without tick delay while player attack >= player max health.</p>
+                <p class="text-success">+Gain health instantly from chests, not on next respawn.</p>
+                <p class="text-success">+Added stats to the settings tab.</p>
+                <p class="text-success">+Added a various new tooltips.</p>
+                <p class="text-success">+Added the shrine which allows you to sacrifice souls for temporary bonuses</p>
+                <p class="text-success">+Enemies now drop souls upon player death based upon the level of the enemy.</p>
+                <p class="text-success">+Added notification bubbles next to chest and shrine tabs to indicate when there are tasks ready to complete.</p>
+                <p class="text-success">+Added combined chest and shrine notifications to the title bar.</p>
+                <p class="text-success">+Added social links, changelog and donation buttons in settings.</p>
+                <p class="text-warning">-The tier 3 chest no longer sometimes gives double rewards after maxing thorns and dodge. </p>
+                <p class="text-warning">-Coin drops are now easier to read, especially on mobile.</p>
+                <p class="text-warning">-Removed coins showing across all tabs, they are now exclusively visible in the chests tab.</p>
+                <p class="text-warning">-The enemy now scales exponentially rather than linearly.</p>
+                <p class="text-warning">-Overhauled notifications making them able to handle more demand.</p>
+                <p class="text-warning">-Reduced the file size of image assets by 70%.</p>
+                <h5>22nd February, 2019</h5>
+                <p class="text-success">+Initial game release.</p>
+              </div>
+              <div id="donate" class="collapse toggle" data-parent="#myGroup">
+                <h5>All donations are greatly appreciated, thanks for the support!</h5>
+                <h6><img src="images/bitcoin.png" class="img-fluid" style="width: 2.5%;"> BTC: 3NwutEiQvSVkSiSfV18rRV92eYcK3pRJcS</h6>
+                <h6><img src="images/ethereum.png" class="img-fluid" style="width: 2.5%;"> ETH: 0x87f8d5C0E065490697b44440532bA1Be0214a563</h6>
+              </div>
+            </div>
           </div>
         </div>
       </div>
